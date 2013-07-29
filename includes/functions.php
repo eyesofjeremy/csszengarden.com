@@ -81,9 +81,10 @@
 			$currentDesign = $loadCSS;
 		}
 
-	// if it is empty, assign 001
+	// if it is empty, assign 214
 	} else {
 		$currentDesign = "001";
+		$currentDesign = "/214/214.css";
 	}
 
     // Prep Stylesheet URL
