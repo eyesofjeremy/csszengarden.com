@@ -6,6 +6,27 @@
 		return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 	}
 
+	// return the Typekit kit identifier or NULL when not found in the CSS
+	function getTypekitId($cssUrl) {
+		$css = false;
+
+		if (preg_match("/^http/", $cssUrl)) {
+			$css = @file_get_contents($cssUrl);
+		} else if (preg_match("/\d+\/\d+.css$/", $cssUrl)) {
+			$path = realpath(__DIR__ . "/../" . $cssUrl);
+
+			if (file_exists($path)) {
+				$css = file_get_contents($path);
+			}
+		}
+
+		if ($css !== false && preg_match("/\/\*\s*TYPEKIT_KIT_ID:\s*([0-9a-z]+)\s*\*\//i", $css, $matches)) {
+			return $matches[1];
+		} else {
+			return null;
+		}
+	}
+
 	// generate the list of designs in the site navigation
 	function getDesignList($start, $count, $list, $i18nBy) {
 
@@ -14,11 +35,14 @@
 		// flush return value
 		$return = "";
 
+		// check for language URL
+		global $langURL;
+
 		// begin at the already-established start of the list and loop down
 		for ($i = $start - 1; $i >= ($start - $count); $i--) {
 
 			$id = $list[$i][0];
-			$designURL = "/$id/";
+			$designURL = $langURL . "/$id/"; // prepend for translation pages
 			$designName = hsc($list[$i][1]);
 			$designerName = hsc($list[$i][2]);
 			$designerURL = hsc($list[$i][3]);
@@ -55,6 +79,7 @@
 
 	// set defaults
 	$numDesigns = 8; // number of designs to show in the nav
+    $currentDesign = '214'; // What is the current main design?
 
 
 	// check the query string to see if:
@@ -66,31 +91,15 @@
 	$thisPage = intval($_GET["pg"]);
 
 
-<<<<<<< HEAD
 	// if $_GET['css'] is not empty, assign it as the design to load
-	// if it is, assign 001
-=======
-	// if cssfile is not empty, assign it as the design to load
->>>>>>> 9eb2fea995c86e43f23c70118c3e18b35959c818
 	if ($loadCSS) {
-
-		// allowing a no-CSS view of the site
-		if ($loadCSS == "none") {
-			$currentDesign = null;
-		} else {
-			$currentDesign = $loadCSS;
-		}
-
-	// if it is empty, assign 214
-	} else {
-		$currentDesign = "001";
-		$currentDesign = "/214/214.css";
+		$currentDesign = $loadCSS;
 	}
 
     // Prep Stylesheet URL
     $currentStyleSheet = "/$currentDesign/$currentDesign.css";
 
-
+	$typekitId = getTypekitId($currentStyleSheet);
 
 	// determine where in the paging we should be
 	if ($thisPage) {
@@ -107,13 +116,5 @@
 		$listStart = count($designList);
 
 	}
-
-
-
-	// set default language to English if not otherwise specified
-	if (!isset($lang)) {
-		$lang = "en";
-	}
-
 
 ?>

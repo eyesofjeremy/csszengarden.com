@@ -18,7 +18,10 @@
 	- 網頁測試的基本要求：IE9+、最新版本的 Chrome/Firefox/Safari、以及 iOS/Android
 	- 降級支援是可被接受，甚至其實是特別鼓勵的。
 	- 使用 class 做樣式，不要用 ID。
-	- 你也可以使用網頁字型，但請確認你有權利分享字型給瀏覽網頁的使用者。
+	- 你也可以使用網頁字型，但請確認你有權利分享字型給瀏覽網頁的使用者。透過將語法添加在
+	  CSS 檔案提供字型的網站 (如 Google Fonts) 是可以使用的，然而大多數需要插入 HTML 的
+	  網頁字型服務不能使用在 CSS Zen Garden 上。TypeKit 是可以使用的，相關步驟請參考以下
+	  連結的 readme 說明: https://github.com/mezzoblue/csszengarden.com/
 
 	另外也提供幾個建立 CSS 檔案的小技巧：
 
@@ -28,8 +31,10 @@
 	- 若你仍有圖片取代文字的需求，請使用 Kellum Method 做文字取代。 http://goo.gl/GXxdI
 	- 請不要倚賴本網頁最下面的 div。請使用 ::before 跟 ::after。
 
-	舊版「樣式表禪意花園」翻譯由 @hlb (薛良斌) 與 李士傑 完成。超破爛的翻譯更新由 @medicalwei (魏藥) 接手。
-	The original translation was done by @hlb (Liang-Bin Hsueh) and and Ilya Eric Lee, and the poor update is by @medicalwei (Yao Wei).
+	舊版「樣式表禪意花園」翻譯由 @hlb (薛良斌) 與 李士傑 完成。超破爛的翻譯更新由
+	@medicalwei (魏藥) 接手。
+	The original translation was done by @hlb (Liang-Bin Hsueh) and and Ilya Eric Lee, and
+	the poor update is by @medicalwei (Yao Wei).
 		",
 	);
 
@@ -56,7 +61,7 @@
 		"participation-h3" => "參與",
 		"participation-p1" => '良好的視覺設計永遠是我們的目標。你必須修改這個頁面，所以得要有良好的<abbr title="Cascading Style Sheets">CSS</abbr>技巧。不過這份範例檔案已經詳盡地加上註解，即使是<abbr title="Cascading Style Sheets">CSS</abbr>初學者也能夠以此為出發點。請參考<a href="' . $zenUrls["zen-resources"] . '" title="CSS相關資源列表"><abbr title="Cascading Style Sheets">CSS</abbr>資源手冊</a>，裡面有相關的進階教學與技巧說明。',
 		"participation-p2" => '你可以用你希望的任何方式修改樣式表，但是別更動<abbr title="HyperText Markup Language">HTML</abbr>檔案。如果你從來都沒有這樣做過，也許會有點心生膽怯。不過你可以參考列表來深入地學習，並且拿範例檔案作為教學指南。',
-		"participation-p3" => '請下載<a href="/zengarden-sample.html" title="這個頁面的HTML程式碼，不該被更動。">HTML</a>跟<a href="/zengarden-sample.css" title="這個頁面的CSS範例檔，你可以更改它。">CSS</a>的範例檔案，並且在自己的電腦上修改。在你完成你的傑作後（請別拿半成品投稿），將<abbr title="Cascading Style Sheets">CSS</abbr>檔案上傳到你的網頁伺服器。把該檔案以及全部使用到的素材包成壓縮檔，並<a href="' . $zenUrls["zen-submit"] . '" title="請用聯絡表單給我們你的CSS檔案">寄給我們連結</a>，如果我們採用你的作品，我們會將其下載並放在我們的伺服器上。',
+		"participation-p3" => '請下載<a href="' . $zenUrls["example-html"] . '" title="這個頁面的HTML程式碼，不該被更動。">HTML</a>跟<a href="/zengarden-sample.css" title="這個頁面的CSS範例檔，你可以更改它。">CSS</a>的範例檔案，並且在自己的電腦上修改。在你完成你的傑作後（請別拿半成品投稿），將<abbr title="Cascading Style Sheets">CSS</abbr>檔案上傳到你的網頁伺服器。把該檔案以及全部使用到的素材包成壓縮檔，並<a href="' . $zenUrls["example-css"] . '" title="請用聯絡表單給我們你的CSS檔案">寄給我們連結</a>，如果我們採用你的作品，我們會將其下載並放在我們的伺服器上。',
 
 		"benefits-h3" => "益處",
 		"benefits-p1" => '你為什麼要參與這項計畫呢？因為可以展現你的實力、激發創作靈感，並作為展示<abbr title="Cascading Style Sheets">CSS</abbr>驚人效果的參考資源。本網站供給現在的網頁工作者一些靈感，給予入門者學習的工具，並提供我們所期待的未來技術的展示。',
